@@ -1,6 +1,9 @@
 .canvas-text {
-  /* width: 100%; */
-  /* height: 400px; */
+  width: 100%;
+  height: 400px;
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
 }
 
 div.head {
@@ -9,22 +12,14 @@ div.head {
   font-weight: bolder;
   font-size: 3em;
   line-height: 1em;
-  padding: 0.1em;
-
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-
-  height: 2.15em;
+  padding: 0.2em;
 }
-
 
 div.color:before {
   position: absolute;
   color: #ff0000;
   content: "■";
-  left: 0em;
+  top: 0em;
   font-weight: bold;
 }
 
@@ -33,38 +28,34 @@ div.color:nth-child(2n + 1) {
   border-radius: 5px;
   background-color: rgb(190, 228, 234);
   color: #000000;
-  padding-left: 20px;
+  padding-top: 20px;
   font-weight: bold;
   position: relative;
-  /* padding-left: 0.2em; */
-  padding-right: 3.2em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
   padding-bottom: 0.2em;
 }
 div.color:nth-child(2n) {
   /* 偶数番目のボックスを装飾するCSS */
   background-color: #ffffff;
   color: #000000;
-  padding-left: 20px;
+  padding-top: 20px;
   font-weight: bold;
   position: relative;
-  /* padding-left: 0.2em; */
-  padding-right: 3.2em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
   padding-bottom: 0.2em;
 }
 
 div.color {
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  height: 2.8em;
+  width: 2.6em; /* 2em（行）x line-heightの1.8 */
+  line-height: 1.2;
 }
 
-.user {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  /* width: 100%; */
-  height: 90%;
-  padding-top: 1%;
+div.head {
+  overflow: hidden;
+  width: 2.6em; /* 2em（行）x line-heightの1.8 */
+  line-height: 1.2;
+  vertical-align: super;
 }

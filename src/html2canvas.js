@@ -43,11 +43,7 @@ export default class html2canvasComponent extends React.Component {
 
       this.setState(oldState => {
         const array = oldState.resultTweetData.slice();
-        array.push({
-          text: text,
-          user: resultStatuses[i].user.profile_image_url
-        });
-        console.log(array);
+        array.push(text);
         return { resultTweetData: array };
       });
       // console.log("update" + i);
@@ -67,13 +63,7 @@ export default class html2canvasComponent extends React.Component {
           {this.state.resultTweetData.map((value, index) => {
             return (
               <div className={index !== 0 ? "color" : "head"} key={index}>
-                {value.text}
-                {/* <span style={{zIndex:10000}}>{value.text}</span> */}
-                {index !== 0 && (
-                  <span>
-                    <img src={value.user} className="user" />
-                  </span>
-                )}
+                {value}
               </div>
             );
           })}
