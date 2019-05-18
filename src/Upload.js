@@ -1,11 +1,13 @@
 import React from "react";
+import "./Upload.css";
 
 export default class Upload extends React.Component {
   render() {
     return (
       <div>
-        tweetText: {this.props.location.state.tweetText}<br />
-        hashTag: {this.props.location.state.hashTag}<br />
+        <div>ほげほげ</div>
+        <p>aaaa</p>
+        <p>bbbb</p>
       </div>
     );
   }

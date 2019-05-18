@@ -1,7 +1,39 @@
 .canvas-text {
-    width: 100%;
-    height: 400px;
-    -webkit-writing-mode: vertical-rl;
-    -ms-writing-mode: tb-rl;
-    writing-mode: vertical-rl;
+  width: 100%;
+  height: 400px;
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+}
+
+div.head {
+  background-color: rgb(59, 74, 161);
+  color: #ffffff;
+  font-weight: bolder;
+  font-size: 3em;
+  line-height: 1em;
+}
+
+div.color:before {
+  position: absolute;
+  color: #ff0000;
+  content: "■";
+  top: 0em;
+  font-weight: bold;
+}
+
+div.color:nth-child(2n + 1) {
+  /* 奇数番目のボックスを装飾するCSS */
+  /* border-radius: 10px; */
+  background-color: rgb(190, 228, 234);
+  color: #000000;
+  padding-top: 20px;
+  font-weight: bold;
+}
+div.color:nth-child(2n) {
+  /* 偶数番目のボックスを装飾するCSS */
+  background-color: #ffffff;
+  color: #000000;
+  padding-top: 20px;
+  font-weight: bold;
 }
