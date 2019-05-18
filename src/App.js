@@ -8,6 +8,8 @@ import Config from "./config";
 import { AWSIoTProvider } from "@aws-amplify/pubsub/lib/Providers";
 import Amplify from "aws-amplify";
 import * as AWS from "aws-sdk";
+import Preview from "./Preview";
+import { Container } from "semantic-ui-react";
 
 Amplify.configure({ Auth: Config.Auth });
 AWS.config.update({ region: Config.region });
@@ -23,8 +25,11 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={CreateBunshun} />
-        <Route exact path="/upload" component={Html2Canvas} />
+        <Container style={{paddingTop: "5em"}}>
+          <Route exact path="/" component={CreateBunshun} />
+          <Route exact path="/upload" component={Html2Canvas} />
+          <Route exact path="/preview" component={Preview} />
+        </Container>
       </Switch>
     </Router>
   );
