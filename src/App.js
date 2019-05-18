@@ -2,6 +2,7 @@ import React from "react";
 import "semantic-ui-css/semantic.min.css";
 import CreateBunshun from "./CreateBunshun";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import Html2Canvas from "./html2canvas";
 import Upload from "./Upload";
 import Config from "./config";
 import { AWSIoTProvider } from "@aws-amplify/pubsub/lib/Providers";
@@ -22,8 +23,8 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={CreateBunshun}/>
-        <Route exact path="/upload" component={Upload}/>
+        <Route exact path="/" component={CreateBunshun} />
+        <Route exact path="/upload" component={Html2Canvas} />
       </Switch>
     </Router>
   );
