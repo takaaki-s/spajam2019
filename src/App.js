@@ -3,7 +3,6 @@ import "semantic-ui-css/semantic.min.css";
 import CreateBunshun from "./CreateBunshun";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Html2Canvas from "./html2canvas";
-import Upload from "./Upload";
 import Config from "./config";
 import { AWSIoTProvider } from "@aws-amplify/pubsub/lib/Providers";
 import Amplify from "aws-amplify";

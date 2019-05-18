@@ -13,7 +13,6 @@ div.head {
   font-size: 3em;
   line-height: 1em;
   padding: 0.2em;
-  /* padding-right: 0.2em; */
 }
 
 div.color:before {
@@ -50,12 +49,13 @@ div.color:nth-child(2n) {
 
 div.color {
   overflow: hidden;
-  width: 3.6em; /* 2em（行）x line-heightの1.8 */
-  line-height: 1.8;
+  width: 2.6em; /* 2em（行）x line-heightの1.8 */
+  line-height: 1.2;
 }
 
 div.head {
   overflow: hidden;
-  width: 3.6em; /* 2em（行）x line-heightの1.8 */
-  line-height: 1.8;
+  width: 2.6em; /* 2em（行）x line-heightの1.8 */
+  line-height: 1.2;
+  vertical-align: super;
 }
