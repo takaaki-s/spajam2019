@@ -1,0 +1,9 @@
+p:nth-child(2n+1) {
+    /* 奇数番目のボックスを装飾するCSS */
+    border-radius: 10px;
+    background-color: rgb(190,228,234);
+ }
+ p:nth-child(2n) {
+    /* 偶数番目のボックスを装飾するCSS */
+    background-color: #ffffff;
+ }
