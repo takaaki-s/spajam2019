@@ -1,4 +1,7 @@
 import React from 'react';
+import Axios from 'axios';
+import './html2canvas.css';
+
 import html2canvas from 'html2canvas';
 
 export default class html2canvasComponent extends React.Component {
@@ -6,26 +9,49 @@ export default class html2canvasComponent extends React.Component {
         super(props);
         this.state = {
             update: 0,
+            resultTweetData: [],
         };
         this.updateCanvas = this.updateCanvas.bind(this);
     }
 
-    componentDidMount() {
-        this.updateCanvas();
-    };
+    async componentDidMount() {
+        // const resultTweetData = require('./result.json');
+        try {
+            const result = await Axios.get("http://localhost:3000/result.json");
+            // const resultStatuses = result.data.statuses
+            // this.setState({
+            //     resultTweetData: result.data.statuses,
+            // });
+            await this.updateCanvas(result.data.statuses);
+        } catch {
 
-    updateCanvas() {
-        for (let i = 1; i < 10; i++) {
-            this.setState({ update: i });
         }
     };
 
+    async updateCanvas(resultStatuses) {
+        for (let i = 0; i < resultStatuses.length; i++) {
+            this.setState((oldState) => {
+                const array = oldState.resultTweetData.slice();
+                array.push(resultStatuses[i]);
+                return { resultTweetData: array };
+            });
+            // console.log("update" + i);
+            // console.log(this.state.update);
+
+
+            const resultCapture = await html2canvas(document.querySelector("#capture"))
+        }
+        // console.log(this.state.resultTweetData);
+    };
+
     render() {
-        const { update } = this.state;
         return (
             <div>
-                <span>aaaaaa</span>
-                <span>{update}</span>
+                <div id="capture" className="canvas-text">
+                    {this.state.resultTweetData.map((value, index) => {
+                        return <span key={index}>{value.text}</span>;
+                    })}
+                </div>
             </div>
         );
     }
