@@ -47,3 +47,15 @@ div.color:nth-child(2n) {
   padding-right: 0.2em;
   padding-bottom: 0.2em;
 }
+
+div.color {
+  overflow: hidden;
+  width: 3.6em; /* 2em（行）x line-heightの1.8 */
+  line-height: 1.8;
+}
+
+div.head {
+  overflow: hidden;
+  width: 3.6em; /* 2em（行）x line-heightの1.8 */
+  line-height: 1.8;
+}

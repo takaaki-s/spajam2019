@@ -49,7 +49,7 @@ export default class html2canvasComponent extends React.Component {
             <div>
                 <div id="capture" className="canvas-text">
                     {this.state.resultTweetData.map((value, index) => {
-                        return <div className={index !==0 ? "color":"head"} key={index}>{value.text}</div>;
+                        return <div className={index !== 0 ? "color" : "head"} key={index}>{value.text}</div>;
                     })}
                 </div>
             </div>
