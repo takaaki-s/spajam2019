@@ -6,6 +6,9 @@ import {
   Link,
   withRouter
 } from "react-router-dom";
+import { Auth } from "aws-amplify";
+import { S3 } from "aws-sdk";
+import iotSubscribe from "./class/iotSubscrube";
 
 class CreateBunshun extends React.Component {
   constructor(props) {
@@ -16,11 +19,37 @@ class CreateBunshun extends React.Component {
     };
   }
 
+  async componentDidMount() {
+    // s3へのアクセスの手順を残す
+    // const credentials = await Auth.currentCredentials();
+    // const essentialCredentials = Auth.essentialCredentials(credentials);
+    // this.s3Client = new S3({
+    //   apiVersion: "2006-03-01",
+    //   credentials: essentialCredentials
+    // });
+    // const list = await this.s3Client
+    //   .listObjectsV2({
+    //     Bucket: "spajam2019",
+    //     // Prefix: data.Prefix
+    //   })
+    //   .promise();
+    //   console.log(list);
+
+
+    // mqttのサブスクライブができたので残す
+    // const cb = data => {
+    //   console.log(data);
+    // };
+
+    // this.subscribe = await iotSubscribe("uretayo/+", cb);
+  }
+
   handleClick = () => {
     this.props.history.push("/upload", {
-         tweetText: this.state.tweetText, hashTag: this.state.hashTag
-      });
-    };
+      tweetText: this.state.tweetText,
+      hashTag: this.state.hashTag
+    });
+  };
 
   handleChange = e => {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
