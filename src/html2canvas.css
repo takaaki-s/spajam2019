@@ -12,6 +12,7 @@ div.head {
   font-weight: bolder;
   font-size: 3em;
   line-height: 1em;
+  padding: 0.2em;
 }
 
 div.color:before {
@@ -24,11 +25,15 @@ div.color:before {
 
 div.color:nth-child(2n + 1) {
   /* 奇数番目のボックスを装飾するCSS */
-  /* border-radius: 10px; */
+  border-radius: 5px;
   background-color: rgb(190, 228, 234);
   color: #000000;
   padding-top: 20px;
   font-weight: bold;
+  position: relative;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  padding-bottom: 0.2em;
 }
 div.color:nth-child(2n) {
   /* 偶数番目のボックスを装飾するCSS */
@@ -36,16 +41,21 @@ div.color:nth-child(2n) {
   color: #000000;
   padding-top: 20px;
   font-weight: bold;
+  position: relative;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  padding-bottom: 0.2em;
 }
 
 div.color {
   overflow: hidden;
-  width: 3.6em; /* 2em（行）x line-heightの1.8 */
-  line-height: 1.8;
+  width: 2.6em; /* 2em（行）x line-heightの1.8 */
+  line-height: 1.2;
 }
 
 div.head {
   overflow: hidden;
-  width: 3.6em; /* 2em（行）x line-heightの1.8 */
-  line-height: 1.8;
+  width: 2.6em; /* 2em（行）x line-heightの1.8 */
+  line-height: 1.2;
+  vertical-align: super;
 }
