@@ -5,6 +5,7 @@ import "./html2canvas.css";
 import html2canvas from "html2canvas";
 import { Auth } from "aws-amplify";
 import { S3 } from "aws-sdk";
+import iotSubscribe from './class/iotSubscrube';
 
 export default class html2canvasComponent extends React.Component {
   constructor(props) {
@@ -18,8 +19,18 @@ export default class html2canvasComponent extends React.Component {
 
   async componentDidMount() {
     // const resultTweetData = require('./result.json');
+    const user = await Auth.currentCredentials();
     try {
       const result = await Axios.get("http://localhost:3000/result.json");
+
+      // mqttのサブスクライブ
+      const cb = data => {
+        // サブスクライブの処理をここにかく
+        console.log(data);
+      };
+
+      this.subscribe = await iotSubscribe(`${user.data.IdentityId}/+`, cb);
+
       await this.updateCanvas(result.data.statuses);
     } catch { }
   }
@@ -48,7 +59,6 @@ export default class html2canvasComponent extends React.Component {
           text: text,
           user: resultStatuses[i].user.profile_image_url
         });
-        console.log(array);
         return { resultTweetData: array };
       });
       // console.log("update" + i);
@@ -57,7 +67,7 @@ export default class html2canvasComponent extends React.Component {
       const resultCapture = await html2canvas(document.querySelector("#capture"))
       const base64 = resultCapture.toDataURL("image/png")
       const blob = this.Base64toBlob(base64);
-      console.log(base64);
+      // console.log(base64);
 
       this.uploadImage(blob, i);
     }
@@ -121,7 +131,7 @@ export default class html2canvasComponent extends React.Component {
       credentials: essentialCredentials
     });
 
-    console.log(data);
+    // console.log(data);
 
     const params = {
       Body: data,
