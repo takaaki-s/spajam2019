@@ -26,23 +26,23 @@ export default class html2canvasComponent extends React.Component {
 
   async updateCanvas(resultStatuses) {
     for (let i = 0; i < resultStatuses.length; i++) {
-      // let text = resultStatuses[i].text.replace(
-      //     /[#＃][Ａ-Ｚａ-ｚA-Za-z一-鿆0-9０-９ぁ-ヶｦ-ﾟー]+/,
-      //     ""
-      // );
-      // text = text.replace(
-      //     /(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)/,
-      //     ""
-      // );
+      let text = resultStatuses[i].text.replace(
+          /[#＃][Ａ-Ｚａ-ｚA-Za-z一-鿆0-9０-９ぁ-ヶｦ-ﾟー]+/,
+          ""
+      );
+      text = text.replace(
+          /(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)/,
+          ""
+      );
 
-      // if (text.length === 0) {
-      //     continue;
-      // }
+      if (text.length === 0) {
+          continue;
+      }
 
       this.setState(oldState => {
         const array = oldState.resultTweetData.slice();
         array.push({
-          text: resultStatuses[i].text,
+          text: text,
           user: resultStatuses[i].user.profile_image_url
         });
         console.log(array);
