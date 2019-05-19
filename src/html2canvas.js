@@ -25,6 +25,7 @@ export default class html2canvasComponent extends React.Component {
   }
 
   async updateCanvas(resultStatuses) {
+    const countArray = [];
     for (let i = 0; i < 9; i++) {
       let text = resultStatuses[i].text.replace(
         /[#＃][Ａ-Ｚａ-ｚA-Za-z一-鿆0-9０-９ぁ-ヶｦ-ﾟー]+/,
@@ -36,8 +37,10 @@ export default class html2canvasComponent extends React.Component {
       );
 
       if (text.length === 0) {
+
         continue;
       }
+      countArray.push(i);
 
       this.setState(oldState => {
         const array = oldState.resultTweetData.slice();
@@ -59,9 +62,9 @@ export default class html2canvasComponent extends React.Component {
       this.uploadImage(blob, i);
     }
     // console.log(this.state.resultTweetData);
-    this.uploadJson(resultStatuses);
+    this.uploadJson(countArray);
   }
-  async uploadJson(resultStatuses) {
+  async uploadJson(countArray) {
 
     const credentials = await Auth.currentCredentials();
     const essentialCredentials = Auth.essentialCredentials(credentials);
@@ -69,8 +72,8 @@ export default class html2canvasComponent extends React.Component {
     const json = {
       imageName: [],
     }
-    for (let i = 0; i < 9; i++) {
-      json.imageName.push(`upload/${credentials.data.IdentityId}-image${i}.png`);
+    for (let i = 0; i < countArray.length; i++) {
+      json.imageName.push(`upload/${credentials.data.IdentityId}_image${countArray[i]}.png`);
     }
     const params = {
       Body: JSON.stringify(json),
@@ -123,7 +126,7 @@ export default class html2canvasComponent extends React.Component {
     const params = {
       Body: data,
       Bucket: "spajam2019",
-      Key: `upload/${credentials.data.IdentityId}-image${num}.png`,
+      Key: `upload/${credentials.data.IdentityId}_image${num}.png`,
     };
     await this.s3Client.putObject(params, function (err, data) {
     });
