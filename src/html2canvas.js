@@ -25,18 +25,18 @@ export default class html2canvasComponent extends React.Component {
   }
 
   async updateCanvas(resultStatuses) {
-    for (let i = 0; i < resultStatuses.length; i++) {
+    for (let i = 0; i < 9; i++) {
       let text = resultStatuses[i].text.replace(
-          /[#＃][Ａ-Ｚａ-ｚA-Za-z一-鿆0-9０-９ぁ-ヶｦ-ﾟー]+/,
-          ""
+        /[#＃][Ａ-Ｚａ-ｚA-Za-z一-鿆0-9０-９ぁ-ヶｦ-ﾟー]+/,
+        ""
       );
       text = text.replace(
-          /(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)/,
-          ""
+        /(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)/,
+        ""
       );
 
       if (text.length === 0) {
-          continue;
+        continue;
       }
 
       this.setState(oldState => {
@@ -69,7 +69,7 @@ export default class html2canvasComponent extends React.Component {
     const json = {
       imageName: [],
     }
-    for (let i = 0; i < resultStatuses.length; i++) {
+    for (let i = 0; i < 9; i++) {
       json.imageName.push(`upload/${credentials.data.IdentityId}-image${i}.png`);
     }
     const params = {
