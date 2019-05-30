@@ -1,4 +1,4 @@
-{
+const json = {
 	"statuses": [
 		{
 			"created_at": "Sat May 18 09:00:37 +0000 2019",
@@ -1897,3 +1897,5 @@
 		"since_id_str": "0"
 	}
 }
+
+export default json;

@@ -1,6 +1,8 @@
 import React from "react";
 import Axios from "axios";
 import "./html2canvas.css";
+import { Button, Form, Header } from "semantic-ui-react";
+import json from './result';
 
 import html2canvas from "html2canvas";
 import { Auth } from "aws-amplify";
@@ -12,26 +14,26 @@ export default class html2canvasComponent extends React.Component {
     super(props);
     this.state = {
       update: 0,
-      resultTweetData: []
+      resultTweetData: [],
     };
     this.updateCanvas = this.updateCanvas.bind(this);
   }
 
   async componentDidMount() {
     // const resultTweetData = require('./result.json');
-    const user = await Auth.currentCredentials();
+    // const user = await Auth.currentCredentials();
     try {
-      const result = await Axios.get("http://localhost:3000/result.json");
+      // const result = await Axios.get("http://localhost:3000/result.json");
 
-      // mqttのサブスクライブ
-      const cb = data => {
-        // サブスクライブの処理をここにかく
-        console.log(data);
-      };
+      // // mqttのサブスクライブ
+      // const cb = data => {
+      //   // サブスクライブの処理をここにかく
+      //   console.log(data);
+      // };
 
-      this.subscribe = await iotSubscribe(`${user.data.IdentityId}/+`, cb);
+      // this.subscribe = await iotSubscribe(`${user.data.IdentityId}/+`, cb);
 
-      await this.updateCanvas(result.data.statuses);
+      await this.updateCanvas(json.statuses);
     } catch { }
   }
 
@@ -72,7 +74,7 @@ export default class html2canvasComponent extends React.Component {
       this.uploadImage(blob, i);
     }
     // console.log(this.state.resultTweetData);
-    this.uploadJson(countArray);
+    // this.uploadJson(countArray);
   }
   async uploadJson(countArray) {
 
@@ -145,6 +147,7 @@ export default class html2canvasComponent extends React.Component {
   render() {
     return (
       <div>
+        <Header>お待ち下さい...</Header>
         <div id="capture" className="canvas-text">
           {this.state.resultTweetData.map((value, index) => {
             return (
